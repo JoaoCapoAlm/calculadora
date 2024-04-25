@@ -95,6 +95,9 @@
                     </div>
                 </form>
             <div class="row">
+                <div class="col-12">
+                    <input class="form-control" type="text" aria-label="Resultado" placeholder="Resultado" value="<?php echo $result; ?>" readonly>
+                </div>
                 <div class="col-12 mt-2">
                     <button type="button" class="btn btn-warning">Salvar</button>
                     <button type="button" class="btn btn-light">Pegar valores</button>
