@@ -1,5 +1,6 @@
 <?php
     session_start();
+
     if (isset($_POST['num1']) && isset($_POST['num2']) && isset($_POST['operator'])) {
         $num1 = $_POST['num1'];
         $num2 = $_POST['num2'];
@@ -38,7 +39,10 @@
                 $result = "Operador inválido!";
         }
 
-        $_SESSION['historico'][] = "$num1 $operator $num2 = $result";
+        if (!isset($_SESSION['historico'])) {
+            $_SESSION['historico'] = array();
+        }
+        array_unshift($_SESSION['historico'], "$num1 $operator $num2 = $result");
     }
 ?>
 
