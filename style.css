@@ -1,0 +1,27 @@
+body {
+    background-color: black;
+    padding: 1em;
+}
+
+#calculadora, header {
+    border: 1px solid #fff;
+    border-radius: 1em;
+    padding: 0.5em;
+}
+
+header {
+    background-color: white;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+@media all and (min-width: 768px) {
+    header {
+        padding-left: 1em;
+        text-align: left;
+    }
+}
+
+h1 {
+    margin: 0;
+}
