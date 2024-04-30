@@ -1,6 +1,6 @@
 <?php
-function operacoes(int $num1, int $num2, string $operator){
-        switch ($operator) {
+function operacoes(int $num1, int $num2, string $operador){
+        switch ($operador) {
             case '+':
                 return $num1 + $num2;
             case '-':
@@ -25,17 +25,33 @@ function operacoes(int $num1, int $num2, string $operator){
         }
 }
 
-function funcoes(string $operacao): void
+function funcoes(string $operacao, array $args): array
 {
     if(empty($operacao))
-        return;
+        return [];
 
     switch ($operacao){
         case 'apagar':
             session_unset();
             session_destroy();
             break;
+        case 'salvar':
+            if(session_status() != PHP_SESSION_ACTIVE){
+                session_start();
+            }
+            $_SESSION['num1'] = $args['num1'] ?? '';
+            $_SESSION['num2'] = $args['num2'] ?? '';
+            $_SESSION['operador'] = $args['operador'] ?? '';
+            break;
+        case 'pegar':
+            return [
+                'num1' => $_SESSION['num1'] ?? '',
+                'num2' => $_SESSION['num2'] ?? '',
+                'operador' => $_SESSION['operador'] ?? ''
+            ];
         default:
             break;
     }
+
+    return [];
 }
